@@ -22,7 +22,7 @@ async function convertPDF() {
 
     const response = await fetch('https://api.pdf.co/v1/pdf/convert/to/doc', {
       method: 'POST',
-      headers: { 'x-api-key': 'YOUR_API_KEY_HERE' }, // ← Replace this!
+      headers: { 'x-api-key': 'shahzik485@gmail.com_SGt0ATFWClrMnrLxK4zzwNUfJPrnCwruHEumullzuYzB5pjfyN2iNfySiAGGO8Y8' }, // ← Replace this!
       body: formData
     });
 
