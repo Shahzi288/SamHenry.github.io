@@ -1,15 +1,42 @@
-<!-- This must be AFTER the button and BEFORE </body> -->
-<script src="script.js"></script>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Free PDF Converter</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic PDF Converter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Convert PDF to Word for Free</h1>
-  <input type="file" id="pdfFile">
-  <button onclick="convertPDF()">Convert</button>
+  <div class="container">
+    <div class="header">
+      <h1>✨ Magic PDF Converter</h1>
+      <p class="subtitle">Transform your PDFs into editable Word documents in seconds!</p>
+    </div>
+    
+    <div class="converter-box">
+      <label for="pdfFile" class="file-upload">
+        <div class="upload-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF icon">
+        </div>
+        <p>Drag & drop your PDF here</p>
+        <p class="file-info">or click to browse files</p>
+        <span id="file-name">No file selected</span>
+      </label>
+      <input type="file" id="pdfFile" accept=".pdf">
+      
+      <button onclick="convertPDF()" class="convert-btn">
+        <span class="btn-text">Convert to Word</span>
+        <span class="btn-icon">→</span>
+      </button>
+    </div>
+    
+    <div class="loader" id="loader">
+      <div class="spinner"></div>
+      <p>Converting your file...</p>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
