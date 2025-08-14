@@ -1,10 +1,11 @@
-// Update file name display
+// Display selected filename
 document.getElementById('pdfFile').addEventListener('change', function(e) {
   const fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
   document.getElementById('file-name').textContent = fileName;
 });
 
-async function convertPDF() {
+// Main conversion function
+function convertPDF() {
   const file = document.getElementById('pdfFile').files[0];
   const loader = document.getElementById('loader');
   
@@ -13,10 +14,30 @@ async function convertPDF() {
     return;
   }
 
-  // Show loading animation
   loader.style.display = 'block';
   
-  try {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  fetch('https://api.pdf.co/v1/pdf/convert/to/doc', {
+    method: 'POST',
+    headers: { 
+      'x-api-key': 'YOUR_API_KEY_HERE' // REPLACE THIS WITH YOUR KEY
+    },
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.error) throw new Error(data.message);
+    window.open(data.url, '_blank');
+  })
+  .catch(error => {
+    alert("Error: " + error.message);
+  })
+  .finally(() => {
+    loader.style.display = 'none';
+  });
+}
     const formData = new FormData();
     formData.append('file', file);
 
