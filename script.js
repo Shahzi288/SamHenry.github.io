@@ -1,6 +1,6 @@
 // Display selected filename
 document.getElementById('pdfFile').addEventListener('change', function(e) {
-  const fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+  const fileName = e.target.files[0] ? e.target.files[0].name : 'No file selected';
   document.getElementById('file-name').textContent = fileName;
 });
 
@@ -14,9 +14,31 @@ function convertPDF() {
     return;
   }
 
-  loader.style.display = 'block';
+  // Show loader
+  loader.style.display = 'flex';
   
   const formData = new FormData();
+  formData.append('file', file);
+
+  fetch('https://api.pdf.co/v1/pdf/convert/to/doc', {
+    method: 'POST',
+    headers: { 
+      'x-api-key': 'shahzik485@gmail.com_O0AoYDjlgvWRmz7yBCDrULtM81YT70ITY6hgo9QLtllX3E369e3V7bitZuIDMFh3'
+    },
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.error) throw new Error(data.message);
+    window.open(data.url, '_blank');
+  })
+  .catch(error => {
+    alert("Conversion failed: " + error.message);
+  })
+  .finally(() => {
+    loader.style.display = 'none';
+  });
+}
   formData.append('file', file);
 
   fetch('https://api.pdf.co/v1/pdf/convert/to/doc', {
