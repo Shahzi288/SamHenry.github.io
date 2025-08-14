@@ -1,2 +1,82 @@
-body { font-family: Arial; text-align: center; margin-top: 50px; }
-button { background: blue; color: white; padding: 10px 20px; border: none; }
+/* Modern Color Palette */
+:root {
+  --primary: #6C63FF;  /* Purple */
+  --secondary: #FF6584; /* Pink */
+  --accent: #42E2B8;   /* Mint */
+  --dark: #2F2E41;     /* Dark blue */
+  --light: #F9F9FF;    /* Off-white */
+}
+
+/* Main Layout */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  text-align: center;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* Header */
+h1 {
+  color: var(--primary);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+/* File Input Styling */
+input[type="file"] {
+  display: none; /* Hide default input */
+}
+
+.custom-file-upload {
+  border: 2px dashed var(--primary);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem auto;
+  max-width: 400px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: white;
+}
+
+.custom-file-upload:hover {
+  background: rgba(108, 99, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Convert Button */
+button {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+  transition: all 0.3s;
+  margin-top: 1rem;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+}
+
+/* Loading Animation */
+.loader {
+  display: none;
+  margin: 2rem auto;
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--accent);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
